@@ -40,7 +40,6 @@ export default function QuestionTemplate(props) {
   const [choosedAnswer, changeAnswer] = useState('')
 
   function chooseOption(env) {
-    if (!isShowAnswer)
       localStorage.setItem(props.id, env.target.value === props.correct_answer ? '1' : '0')
       changeAnswer(env.target.value)
   }
@@ -48,7 +47,7 @@ export default function QuestionTemplate(props) {
   const mapAnswers = props.shuffle_answers.map(index => {
     return (
       <button
-        key={index} value={index} className='choice' onClick={chooseOption}
+        key={index} value={index} className='choice' onClick={isShowAnswer ? undefined : chooseOption}
         style={
           isShowAnswer ? 
             index === choosedAnswer ?
