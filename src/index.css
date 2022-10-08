@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+#gridQuestion {
+    grid-auto-rows: 1fr;
+}
+
+.choice {
+    max-width: 300px;
+    border: 1px solid;
+    border-radius: 1em;
+    padding: 0.25em 1em 0.25em 1em;
+}
+
+.choice:hover {}
+
+#checkAnswersButton {
+    width: min(250px,80%)
+}
+
+#checkAnswersButton:hover {
+    width: min(250px,80%)
+}
