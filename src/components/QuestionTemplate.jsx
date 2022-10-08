@@ -9,7 +9,6 @@ function decodeEntity(inputStr) {
 export default function QuestionTemplate(props) {
   const [isShowAnswer, changeShowAnswer] = useState(false)
   useMemo(() => {
-    // console.log(typeof(localStorage.getItem('showAnswers')))
     if (localStorage.getItem('showAnswers') === 'true') {
       changeShowAnswer(true)
     }
@@ -42,6 +41,7 @@ export default function QuestionTemplate(props) {
 
   function chooseOption(env) {
     if (!isShowAnswer)
+      localStorage.setItem(props.id, env.target.value === props.correct_answer ? '1' : '0')
       changeAnswer(env.target.value)
   }
 

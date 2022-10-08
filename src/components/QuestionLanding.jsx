@@ -25,10 +25,19 @@ export default function QuestionLanding() {
         allQuestions = quizData.map(index => (<QuestionTemplate {...index} key={index.id} />))
     }
     const [isShowAnswer, changeShowAnswer] = useState(false)
+    
+    const[score, changeScore] = useState(0)
 
     function showAnswer() {
-        localStorage.setItem('showAnswers', 'true')
+        if(!isShowAnswer){
+            localStorage.setItem('showAnswers', 'true')
+        for(let index in quizData) {
+            if(localStorage.getItem(quizData[index].id) === '1') {
+                changeScore(prevState=>prevState+=1)
+            }
+        }
         changeShowAnswer(prevState => !prevState)
+        }
     }
 
     return (
@@ -37,7 +46,8 @@ export default function QuestionLanding() {
             {quizData &&
                 <div className='max-w-6xl m-auto py-10'>
                     {allQuestions}
-                    <div className='flex justify-center mt-5'>
+                    <div className='flex justify-center mt-5 items-center flex-wrap gap-2'>
+                        {isShowAnswer && <div className='font-inter font-bold text-base'>You scored {score}/5 correct answers</div>}
                         <button
                             onClick={showAnswer}
                             id='checkAnswersButton'
